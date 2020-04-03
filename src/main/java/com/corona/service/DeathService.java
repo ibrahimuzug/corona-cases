@@ -1,4 +1,4 @@
 package com.corona.service;
 
-public class DeathService {
+public interface DeathService {
 }

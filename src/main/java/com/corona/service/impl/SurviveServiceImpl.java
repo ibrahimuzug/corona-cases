@@ -1,16 +1,31 @@
 package com.corona.service.impl;
 
-import com.corona.model.Survive;
+import com.corona.dto.SurviveDto;
+import com.corona.repository.SurviveRepository;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface SurviveServiceImpl {
+@Service
+public class SurviveServiceImpl {
 
-    void create(Survive survive);
+    private final SurviveRepository surviveRepository;
 
-    Mono<Survive> findById(Integer id);
+    public SurviveServiceImpl(SurviveRepository surviveRepository) {
+        this.surviveRepository = surviveRepository;
+    }
 
-    Flux<Survive> findAll();
+    public void create(SurviveDto survivors) {
+        surviveRepository.save(survivors);
+    }
+
+    public Flux<SurviveDto> findAll() {
+        return surviveRepository.findAll();
+    }
+
+    public Mono<SurviveDto> findById() {
+        return surviveRepository.findById();
+    }
 
 
 }

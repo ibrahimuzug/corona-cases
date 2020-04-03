@@ -1,4 +1,4 @@
 package com.corona.service.impl;
 
-public interface CaseServiceImpl {
+public class CaseServiceImpl {
 }

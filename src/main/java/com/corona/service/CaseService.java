@@ -1,4 +1,4 @@
 package com.corona.service;
 
-public class CaseService {
+public interface CaseService {
 }
