@@ -1,15 +1,17 @@
 package com.corona.dto;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
 
+@RequiredArgsConstructor
+@Accessors(fluent = true)
 @Getter
-@Setter
-@NoArgsConstructor
 public class SurviveDto {
-
-    private String country;
-    private String survivors;
+    @NonNull
+    private final String country;
+    @NonNull
+    private final String survivors;
 
 }
