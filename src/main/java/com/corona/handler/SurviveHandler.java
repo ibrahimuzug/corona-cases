@@ -1,11 +1,10 @@
 package com.corona.handler;
 
 import com.corona.dto.SurviveDto;
-import com.corona.model.SurviveEntity;
 import com.corona.repository.SurviveRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.function.ServerRequest;
-import org.springframework.web.servlet.function.ServerResponse;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -26,16 +25,7 @@ public class SurviveHandler {
     }
 
     public Mono<ServerResponse> create(ServerRequest request) {
-        Mono<SurviveDto> survivors = request.body(SurviveDto.class);
-        return ServerResponse.ok().build(surviveRepository.savePerson(person));
-    }
-
-    public Mono<ServerResponse> getPerson(ServerRequest request) {
-        int id = Integer.valueOf(request.pathVariable("id"));
-        Mono<ServerResponse> notFound = ServerResponse.notFound().build();
-        Mono<SurviveDto> personMono = this.surviveRepository.findById(id);
-        return personMono
-                .then(person -> ServerResponse.ok().contentType(APPLICATION_JSON).body(fromObject(person)))
-                .otherwiseIfEmpty(notFound);
+        Mono<SurviveDto> survivors = request.bodyToMono(SurviveDto.class);
+        return ServerResponse.ok().build(surviveRepository.create(survivors));
     }
 }
