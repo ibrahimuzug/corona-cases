@@ -18,8 +18,4 @@ public class CaseEntity {
 
     private Integer caseAmount;
 
-    @Override
-    public String toString() {
-        return "Case [id=" + id + ", country=" + country + ", caseAmount=" + caseAmount + "]";
-    }
 }

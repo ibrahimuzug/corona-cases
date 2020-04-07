@@ -18,8 +18,4 @@ public class DeathEntity {
 
     private Integer deaths;
 
-    @Override
-    public String toString() {
-        return "Deaths [id=" + id + ", country=" + country + ", deaths=" + deaths + "]";
-    }
 }

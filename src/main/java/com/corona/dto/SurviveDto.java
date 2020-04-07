@@ -1,19 +1,21 @@
 package com.corona.dto;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.Accessors;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-@RequiredArgsConstructor
-@Accessors(fluent = true)
 @Getter
 @Setter
+@Builder(toBuilder = true)
+@Table("survive")
+@AllArgsConstructor
 public class SurviveDto {
-    @NonNull
+    @Id
+    private final Integer id;
+    @Column
     private final String country;
-    @NonNull
+    @Column
     private final String survivors;
 
 }

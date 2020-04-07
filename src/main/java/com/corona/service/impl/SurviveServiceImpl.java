@@ -16,16 +16,12 @@ public class SurviveServiceImpl implements SurviveService {
         this.surviveRepository = surviveRepository;
     }
 
-    public void create(SurviveDto survivors) {
-        surviveRepository.save(survivors);
+    public Mono<SurviveDto> create(Mono<SurviveDto> survivors) {
+        return surviveRepository.create(survivors);
     }
 
     public Flux<SurviveDto> findAll() {
         return surviveRepository.findAll();
-    }
-
-    public Mono<SurviveDto> findById() {
-        return surviveRepository.findById();
     }
 
 
