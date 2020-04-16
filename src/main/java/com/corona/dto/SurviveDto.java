@@ -1,21 +1,39 @@
 package com.corona.dto;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
-@Getter
-@Setter
-@Builder(toBuilder = true)
-@Table("survive")
-@AllArgsConstructor
 public class SurviveDto {
-    @Id
-    private final Integer id;
-    @Column
-    private final String country;
-    @Column
-    private final String survivors;
+    private Integer id;
+    private String country;
+    private Integer survivors;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getSurvivors() {
+        return survivors;
+    }
+
+    public void setSurvivors(Integer survivors) {
+        this.survivors = survivors;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Survivors[id=%d, country='%s', survivors='%d']",
+                id, country, survivors);
+    }
 
 }

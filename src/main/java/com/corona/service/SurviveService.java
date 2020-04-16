@@ -7,6 +7,6 @@ import reactor.core.publisher.Mono;
 public interface SurviveService {
     Flux<SurviveDto> findAll();
 
-    Mono<SurviveDto> create(Mono<SurviveDto> survivors);
+    Mono<SurviveDto> create(SurviveDto survivors);
 
 }

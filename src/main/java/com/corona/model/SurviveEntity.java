@@ -1,24 +1,20 @@
 package com.corona.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+@Data
+@NoArgsConstructor
 @Getter
 @Setter
-@Builder(toBuilder = true)
-@ToString
-@Table("survive")
-@AllArgsConstructor
+@Table("survivors")
 public class SurviveEntity {
-    @Id
-    private Integer id;
-
-    @Column
+    private @Id
+    Integer id;
     private String country;
-
-    @Column
     private Integer survivors;
-
 }

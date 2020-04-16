@@ -1,6 +1,7 @@
 package com.corona.config;
 
 import com.corona.handler.SurviveHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -8,29 +9,20 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 
 @Configuration
 public class SurviveRouterConfig {
 
+    @Autowired
+    public SurviveHandler surviveHandler;
+
     @Bean
-    public RouterFunction<ServerResponse> surviveRoutes(SurviveHandler surviveHandler) {
-
-        return RouterFunctions.route()
-                .path("/survivor", builder -> builder
-                        .POST("", accept(MediaType.APPLICATION_JSON), surviveHandler::create)
-                        .GET("", accept(MediaType.APPLICATION_JSON), surviveHandler::findAll))
-                .build();
-    }
-
-   /* @Bean
-    public RouterFunction<ServerResponse> surviveRoutes(SurviveHandler handler) {
+    public RouterFunction<ServerResponse> route(SurviveHandler surviveHandler) {
         return RouterFunctions
-                .route(POST("/survive").and(accept(MediaType.APPLICATION_JSON)), handler::create)
-                .andRoute(GET("/survive").and(accept(MediaType.APPLICATION_JSON)), handler::findAll)
-                .andRoute(GET("/"), request -> ServerResponse.ok()
-                        .body(fromValue("This Is Corona Case Web Application HOME PAGE!!!! We will be here soon !!!")));
-    }*/
+                .route(GET("/survivors").and(accept(MediaType.APPLICATION_JSON)), surviveHandler::findAll)
+                .andRoute(POST("/survivors").and(accept(MediaType.APPLICATION_JSON)), surviveHandler::create);
+    }
 
 }
