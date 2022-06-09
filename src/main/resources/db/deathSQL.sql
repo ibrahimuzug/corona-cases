@@ -8,7 +8,7 @@ For more accurate data check the WHO websites.
 create table death (
                        ID int not null,
                        COUNTRY varchar(100) not null,
-                       DEATHS int(100)
+                       DEATHS int
 );
 
 insert into death (ID, COUNTRY, DEATHS) values (1, 'Turkey','233');

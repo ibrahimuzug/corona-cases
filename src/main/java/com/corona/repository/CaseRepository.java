@@ -11,9 +11,9 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface CaseRepository extends ReactiveCrudRepository<CaseEntity, Long> {
 
-    @Query("SELECT * FROM case WHERE id = {id}")
+    @Query("SELECT * FROM cases WHERE id = {id}")
     Mono<CaseDto> findById(Integer id);
 
-    @Query("SELECT * FROM case")
+    @Query("SELECT * FROM cases")
     Flux<CaseEntity> findAll();
 }

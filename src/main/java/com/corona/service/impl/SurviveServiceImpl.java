@@ -11,7 +11,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class SurviveServiceImpl implements SurviveService {
 
-    @Autowired
     private final SurviveRepository surviveRepository;
 
     public SurviveServiceImpl(SurviveRepository surviveRepository) {

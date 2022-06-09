@@ -14,6 +14,6 @@ public interface DeathRepository extends ReactiveCrudRepository<DeathEntity, Lon
     @Query("SELECT * FROM death WHERE id = {id}")
     Mono<DeathDto> findById(Integer id);
 
-    @Query("SELECT * FROM case")
+    @Query("SELECT * FROM cases")
     Flux<DeathEntity> findAll();
 }
